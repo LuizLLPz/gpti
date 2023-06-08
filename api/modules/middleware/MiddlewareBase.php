@@ -1,4 +1,4 @@
 <?php
 abstract class MiddlewareBase {
-    abstract static function start():bool ;
+    abstract function start():bool ;
 }

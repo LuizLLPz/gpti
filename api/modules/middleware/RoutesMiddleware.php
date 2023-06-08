@@ -1,12 +1,13 @@
 <?php
 class RoutesMiddleware extends MiddlewareBase
 {
-    static function start(): bool {
-        fetchRoute();
+    function start(): bool {
+        return $this->fetchRoute();
+    }
+
+    function fetchRoute():bool {
+        $url =  $_SERVER['REQUEST_URI'];
         return true;
     }
 
-    function fetchRoute() {
-        echo $_SERVER['REQUEST_URI'];
-    }
 }

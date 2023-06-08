@@ -1,9 +1,10 @@
 <?php
-require './utils/load_modules.php';
+
+require './modules/index.php';
 
 $app = new App();
 
-$app->addMiddleware(RoutesMiddleware::class);
+$app->addMiddleware(new RoutesMiddleware());
 
 $app->start();
 

@@ -1,5 +1,5 @@
 <IfModule mod_rewrite.c>
     RewriteEngine On
-    RewriteBase /gpti/
+    RewriteBase /
     RewriteRule ^(.*)$ index.php [END]
 </IfModule>

@@ -2,21 +2,20 @@
 class App {
     private array $pipeline;
 
-    public function __construct()
-    {
+    public function __construct(){
         $this->pipeline = [];
     }
 
     function start(){
         foreach($this->pipeline as $mid) {
-            $error = $mid->start();
-            if ($error) {
+            $success = $mid->start();
+            if (!$success) {
                 echo "Erro";
             }
         }
     }
 
-    function addMiddleware(MiddlewareBase $middleware) {
-        $this->pipeline->insert($middleware);
+    function addMiddleware(MiddlewareBase $middleware): void {
+        $this->pipeline[] = $middleware;
     }
 }
