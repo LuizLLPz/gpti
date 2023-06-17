@@ -12,7 +12,9 @@ class App {
             $http = $mid->start($http);
             http_response_code($http->status_code);
             if (!$http->success) {
-                echo $http->status_code;
+                echo json_encode($http->error, JSON_PRETTY_PRINT);
+            } else {
+                echo(json_encode($http->response, JSON_PRETTY_PRINT));
             }
         }
     }
