@@ -6,11 +6,13 @@ class App {
         $this->pipeline = [];
     }
 
-    function start(){
+    function start(): void{
+        $http = new Http();
         foreach($this->pipeline as $mid) {
-            $success = $mid->start();
-            if (!$success) {
-                echo "Erro";
+            $http = $mid->start($http);
+            http_response_code($http->status_code);
+            if (!$http->success) {
+                echo $http->status_code;
             }
         }
     }
