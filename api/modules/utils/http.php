@@ -41,6 +41,13 @@ class Http {
         return $this;
     }
 
+    public function unauthorized(?string $title = null, ?string $message = null): Http {
+        $this->success = false;
+        $this->status_code = 401;
+        $this->error = new ErrorResponse($title, $message);
+        return $this;
+    }
+
     public function methodNotAllowed(): Http {
         $this->success = false;
         $this->status_code = 405;

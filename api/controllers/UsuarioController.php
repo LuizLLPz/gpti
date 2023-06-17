@@ -1,18 +1,20 @@
 <?php
 require "./services/UsuarioService.php";
+
 class UsuarioController {
     static function login($http): Http {
         $params = [];
         parse_str(parse_url($_SERVER['REQUEST_URI'], PHP_URL_QUERY), $params);
-        if (isset($params['nome'])) {
-            $user = UsuarioService::login($params['nome']);
-            if ($user != null) {
-                return $http->ok($user);
-            } else {
-                return $http->notFound('Usuário não encontrado!');
-            }
+        $usuario = $params['nome'] ?? null;
+        $senha = $params['senha'] ?? null;
+        if ($usuario && $senha) {
+            return UsuarioService::login($usuario, $senha);
         }
-        return $http->badRequest("Informações insuficientes", "É necessário informar o nome do usuário");
+        $msg = "É necessário informar";
+        if (!$usuario) $msg .= " o nome de usuário";
+        if (!$senha && !$usuario) $msg .= " e";
+        if (!$senha) $msg .= " a senha";
+        return $http->badRequest("Informações insuficientes", $msg);
 
     }
 

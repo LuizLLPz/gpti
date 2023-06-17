@@ -2,8 +2,16 @@
 require "./models/UsuarioModel.php";
 
 class UsuarioService {
-    static function login(string $name): ?UsuarioModel {
-        return UsuarioModel::getWithName($name);
+    static function login(string $name, string $senha): Http {
+        $usuario = UsuarioModel::getWithName($name);
+        $http = new Http();
+        if ($usuario != null) {
+            if (password_verify($senha, $usuario->SENHA)) {
+                return $http->ok($usuario);
+            }
+        }
+        return $http->unauthorized("Usuário ou senha inválidos");
+
     }
 
     static function register(Http $http): Http {
