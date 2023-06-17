@@ -15,7 +15,6 @@ class UsuarioController {
         if (!$senha && !$usuario) $msg .= " e";
         if (!$senha) $msg .= " a senha";
         return $http->badRequest("Informações insuficientes", $msg);
-
     }
 
     static function cadastro($http) {

@@ -31,7 +31,7 @@ class UsuarioModel {
             $query->bindParam(":NOMEUSUARIO", $model['NOMEUSUARIO']);
             $query->bindParam(":NOME", $model['NOME']);
             $query->bindParam(":SOBRENOME", $model['SOBRENOME']);
-            $hash = password_hash($model['SENHA'], PASSWORD_ARGON2ID);
+            $hash = password_hash($model['SENHA'], PASSWORD_BCRYPT);
             $query->bindParam(":SENHA", $hash);
             $query->execute();
             return true;
