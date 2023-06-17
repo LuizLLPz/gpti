@@ -6,13 +6,13 @@ class UsuarioController {
         parse_str(parse_url($_SERVER['REQUEST_URI'], PHP_URL_QUERY), $params);
         if (isset($params['nome'])) {
             $user = UsuarioService::login($params['nome']);
-            if($user != null) {
-                $http->response = $user;
+            if ($user != null) {
+                return $http->ok($user);
             } else {
-                return $http->notFound();
+                return $http->notFound('Usuário não encontrado!');
             }
         }
-        return $http->badRequest();
+        return $http->badRequest("Informações insuficientes", "É necessário informar o nome do usuário");
 
     }
 

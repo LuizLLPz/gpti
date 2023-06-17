@@ -15,20 +15,26 @@ class Http {
         $this->body = [];
     }
 
+    public function ok(mixed $response): Http {
+        $this->status_code = 200;
+        $this->response = $response;
+        return $this;
+    }
+
     public function created(mixed $response): Http {
         $this->status_code = 201;
         $this->response = $response;
         return $this;
     }
 
-    public function notFound(?string $title, ?string $message): Http {
+    public function notFound(?string $title = null, ?string $message = null): Http {
         $this->success = false;
         $this->status_code = 404;
         $this->error = new ErrorResponse($title, $message);
         return $this;
     }
 
-    public function badRequest(?string $title, ?string $message): Http {
+    public function badRequest(?string $title = null, ?string $message = null): Http {
         $this->success = false;
         $this->status_code = 400;
         $this->error = new ErrorResponse($title, $message);
@@ -41,5 +47,13 @@ class Http {
         $this->error = new ErrorResponse("Método não permitido");
         return $this;
     }
+
+    public function conflict(?string $title = null, ?string $message = null): Http {
+        $this->success = false;
+        $this->status_code = 409;
+        $this->error = new ErrorResponse($title, $message);
+        return $this;
+    }
+
 
 }

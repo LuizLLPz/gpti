@@ -7,37 +7,31 @@ class UsuarioModel {
     public string $SOBRENOME;
     public string $SENHA;
 
-    public function __construct(string $NOMEUSUARIO, string $NOME, string $SOBRENOME, string $SENHA)
-    {
-        $this->NOMEUSUARIO = $NOMEUSUARIO;
-        $this->NOME = $NOME;
-        $this->SOBRENOME = $SOBRENOME;
-        $this->SENHA = $SENHA;
-    }
-
-
     static function getWithName($name): ?UsuarioModel {
         global $connection;
         $sql = "SELECT * FROM USUARIO WHERE NOMEUSUARIO = :NOMEUSUARIO";
         $query = $connection->prepare($sql);
         $query->bindParam(":NOMEUSUARIO", $name);
         $query->execute();
-        $users = $query->fetchAll(PDO::FETCH_CLASS, 'UsuarioModel');
-        if (sizeof($users) == 0) {
-            return null;
-        }
-        else return $users[0];
+        $user = $query->fetchObject('UsuarioModel');
+        if (!$user) return null;
+        return $user;
     }
 
-    static function save(?UsuarioModel $model): bool | Http  {
+    static function save(?array $model): bool | Http  {
         try {
             global $connection;
+            $existe = UsuarioModel::getWithName($model['NOMEUSUARIO'] ?? '') != null;
+            if ($existe) {
+                $http = new Http();
+                return $http->conflict("Usuário já existe");
+            }
             $sql = "INSERT INTO USUARIO (NOMEUSUARIO, NOME, SOBRENOME, SENHA) VALUES (:NOMEUSUARIO, :NOME, :SOBRENOME, :SENHA)";
             $query = $connection->prepare($sql);
-            $query->bindParam(":NOMEUSUARIO", $model->NOMEUSUARIO);
-            $query->bindParam(":NOME", $model->NOME);
-            $query->bindParam(":SOBRENOME", $model->SOBRENOME);
-            $hash = password_hash($model->SENHA, PASSWORD_ARGON2ID);
+            $query->bindParam(":NOMEUSUARIO", $model['NOMEUSUARIO']);
+            $query->bindParam(":NOME", $model['NOME']);
+            $query->bindParam(":SOBRENOME", $model['SOBRENOME']);
+            $hash = password_hash($model['SENHA'], PASSWORD_ARGON2ID);
             $query->bindParam(":SENHA", $hash);
             $query->execute();
             return true;

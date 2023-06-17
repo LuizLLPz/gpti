@@ -7,10 +7,8 @@ class UsuarioService {
     }
 
     static function register(Http $http): Http {
-        $model = $http->body;
-        $user = new UsuarioModel($model['NOMEUSUARIO'], $model['NOME'], $model['SOBRENOME'], $model['SENHA']);
-        $save = UsuarioModel::save($user);
-        if ($save) {
+        $save = UsuarioModel::save($http->body);
+        if ($save === true) {
             $http = new Http();
             return $http->created("Usuário criado com sucesso");
         } else {
