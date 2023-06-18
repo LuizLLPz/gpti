@@ -7,10 +7,10 @@ class Http {
     public ?array $body;
     public ?ErrorResponse $error;
 
-    public function __construct() {
+    public function __construct(int $status_code = null, mixed $response = null) {
         $this->success = true;
-        $this->status_code = 200;
-        $this->response = null;
+        $this->status_code = $status_code ?? 200;
+        $this->response = $response ?? null;
         $this->params = [];
         $this->body = [];
     }
