@@ -3,11 +3,8 @@ import {useForm} from "react-hook-form";
 
 import {Button, Input} from "@/components";
 import {User, UserDTO} from "@/types";
-<<<<<<< HEAD
 import Link from "next/link";
-=======
 import {usePageTitle} from "@/hooks";
->>>>>>> ad761c8c0011cb5a069648aadbff431f38cfa674
 
 export default function Login() {
     async function login(model: User) {
@@ -32,8 +29,6 @@ export default function Login() {
 
     return(
         <div className="d-flex align-items-center py-4 bg-body-tertiary">
-
-        
         <main className="form-signin w-90 m-auto">
                 <form>
                 <h1 className="h3 mb-3 fw-normal">Log In</h1>
@@ -46,6 +41,6 @@ export default function Login() {
                     <Link className="btn btn-outline-secondary w-100" href="/">Cancelar</Link>
                 </form>
         </main>
-        // </div>
+        </div>
     )
 }
