@@ -1,9 +1,5 @@
 'use client';
 import Link from "next/link";
-<<<<<<< HEAD
-
-=======
->>>>>>> 2ceaf454a3db69633f05aa02f3a860c69856473c
 import {useForm} from "react-hook-form"
 import {Button, Input} from "@/components";
 import {usePageTitle} from "@/hooks/";
@@ -44,29 +40,17 @@ export default function Register() {
                         />
                     <div className="d-flex flex-row gap-sm-4 flex-wrap">
                         <Input className="flex-sm-grow-1" name="name" label="Nome" placeholder="Digite o primeiro nome"
-<<<<<<< HEAD
                                register={register}
                         />
                         <Input className="flex-sm-grow-1" name="surname" label="Sobrenome"
                                placeholder="Digite o sobrenome" 
                                register={register}
-=======
-                            register={register}
-                        />
-                        <Input className="flex-sm-grow-1" name="surname" label="Sobrenome"
-                               placeholder="Digite o sobrenome" 
-                            register={register}
->>>>>>> 2ceaf454a3db69633f05aa02f3a860c69856473c
                             />
                     </div>
                     <div>
                         <Input name="password" label="Senha" placeholder="Digite a sua senha"
                                type="password" 
-<<<<<<< HEAD
                                register={register}
-=======
-                           register={register}
->>>>>>> 2ceaf454a3db69633f05aa02f3a860c69856473c
                             />
 
                     </div>
@@ -74,20 +58,6 @@ export default function Register() {
                     onClick={handleSubmit(registerUser)}
                      text="Cadastrar"/>
                     <Link className="btn btn-outline-secondary" href={"/"}>Cancelar</Link>
-<<<<<<< HEAD
-=======
-                        <Input className="flex-grow-1" name="name" label="Nome" placeholder="Digite o primeiro nome"
-                               register={register}/>
-                        <Input className="flex-grow-1" name="surname" label="Sobrenome"
-                               placeholder="Digite o sobrenome" register={register}/>
-                    <div>
-                        <Input name="password" label="Senha" placeholder="Digite a sua senha"
-                               type="password" register={register} className="col-md-10"/>
-                    </div>
-                    <div className="d-flex justify-content-center">
-                        <Button onClick={handleSubmit(registerUser)} text="Cadastrar" className="col-sm-4 "/>
-                    </div>
->>>>>>> 2ceaf454a3db69633f05aa02f3a860c69856473c
                 </form>
             </div>
         </main>
