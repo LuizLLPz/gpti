@@ -10,7 +10,7 @@ type InputProps<T> = {
     type?: HTMLInputTypeAttribute
 }
 
-export function Input<T>({name, label, placeholder, className, register, type}: InputProps<T>): JSX.Element {
+export function Input<T>({name, label, placeholder, className = '', register, type}: InputProps<T>): JSX.Element {
     return (
         <div className={"d-flex w-auto flex-column " + className}>
             <label htmlFor={name}>{label}</label>
