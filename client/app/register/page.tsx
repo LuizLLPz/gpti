@@ -18,7 +18,8 @@ export default function Register() {
             SOBRENOME: model.surname,
             SENHA: model.password
         }
-        await fetch('http://localhost:3000/api/users', {body: JSON.stringify(user), method: 'POST'})
+        const data = await fetch('http://localhost:80/Usuario/cadastro', {body: JSON.stringify(user), method: 'POST'})
+        console.log(data)
     }
 
     return(
@@ -32,7 +33,8 @@ export default function Register() {
                         <Input className="flex-sm-grow-1" name="surname" label="Sobrenome" placeholder="Digite o sobrenome" register={register}/>
                     </div>
                     <div>
-                        <Input name="password" label="Senha" placeholder="Digite a sua senha" register={register}/>
+                        <Input name="password" label="Senha" placeholder="Digite a sua senha"
+                               type="password" register={register}/>
                     </div>
                     <Button onClick={handleSubmit(registerUser)} text="Cadastrar"/>
                 </form>
