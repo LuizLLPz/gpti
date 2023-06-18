@@ -8,7 +8,7 @@ type InputProps<T> = {
     type?: React.InputHTMLAttributes<T>
 }
 
-export function Input<T>({name, placeholder, register, type}: InputProps<T>): JSX.Element {
+export function Input<T>({name, label, placeholder, register, type}: InputProps<T>): JSX.Element {
     return (
         <div className="d-flex w-25 gap-2">
             <label htmlFor={name}>{label}</label>
