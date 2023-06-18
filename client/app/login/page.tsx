@@ -28,15 +28,17 @@ export default function Login() {
 
     return(
         <main>
-            <div>
+            <div className="px-4 py-2">
                 <h1>Log In</h1>
-                <form className="d-flex flex-column">
+                <form className="d-flex flex-column col-md-5 gap-2">
                     <Input className="w-auto" name="username" label="Nome de usuário"
                            placeholder="Digite o nome de usuário" register={register}/>
                     <Input className="w-auto" name="password" type="password"
                            label="Senha" placeholder="Digite a senha"
                            register={register}/>
-                    <Button onClick={handleSubmit(login)} text="Entrar"/>
+                    <div>
+                        <Button onClick={handleSubmit(login)} text="Entrar" className="col-sm-4"/>
+                    </div>
                 </form>
             </div>
         </main>

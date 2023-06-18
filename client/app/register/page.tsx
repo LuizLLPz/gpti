@@ -33,22 +33,24 @@ export default function Register() {
 
     return (
         <main>
-            <div className="px-4 py-2">
+            <div className="px-4 py-2 col-md-5">
                 <h1>Cadastro</h1>
                 <form className="d-flex flex-column gap-2">
                     <Input name="username" label="Nome de usuário" placeholder="Digite o nome de usuário"
                            register={register}/>
                     <div className="d-flex flex-row gap-sm-4 flex-wrap">
-                        <Input className="flex-sm-grow-1" name="name" label="Nome" placeholder="Digite o primeiro nome"
+                        <Input className="flex-grow-1" name="name" label="Nome" placeholder="Digite o primeiro nome"
                                register={register}/>
-                        <Input className="flex-sm-grow-1" name="surname" label="Sobrenome"
+                        <Input className="flex-grow-1" name="surname" label="Sobrenome"
                                placeholder="Digite o sobrenome" register={register}/>
                     </div>
                     <div>
                         <Input name="password" label="Senha" placeholder="Digite a sua senha"
-                               type="password" register={register}/>
+                               type="password" register={register} className="col-md-10"/>
                     </div>
-                    <Button onClick={handleSubmit(registerUser)} text="Cadastrar"/>
+                    <div className="d-flex justify-content-center">
+                        <Button onClick={handleSubmit(registerUser)} text="Cadastrar" className="col-sm-4 "/>
+                    </div>
                 </form>
             </div>
             <Link href={"/"}>Cancelar</Link>
