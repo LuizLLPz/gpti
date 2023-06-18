@@ -24,4 +24,11 @@ class ProjetoService {
         $projeto->DESCRICAO = $descricao;
         return ($projeto->criarProjeto());
     }
+
+    static function apagarProjeto(string $id): Http {
+        $http = new Http();
+        $projeto = ProjetoModel::obterProjetoID($id);
+        if (!$projeto) return $http->notFound("Projeto não encontrado");
+        return $projeto->apagarProjeto();
+    }
 }
