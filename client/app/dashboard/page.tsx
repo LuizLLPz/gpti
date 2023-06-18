@@ -10,13 +10,13 @@ import Header from "../header";
 import {getProjetosEmpresa} from "@/app/dashboard/services";
 
 export default function Dashboard() {
-    const [project, setProject] = useState<Project[]>([])
+    const [projects, setProjects] = useState<Project[]>([])
     const [checklist, setChecklist] = useState<Checklist[]>([])
     const [auditoria, setAuditoria] = useState<Auditoria[]>([])
 
     useEffect(() => {
         async function fetchData() {
-            setProject(await getProjetosEmpresa())
+            setProjects(await getProjetosEmpresa())
         }
         fetchData()
         setTimeout(() => {
@@ -24,7 +24,6 @@ export default function Dashboard() {
             setAuditoria([{name: "Auditoria 1", description: "Descrição da auditoria 1", date: new Date(), project: {name: "Projeto 1", description: "Descrição do projeto 1"}}, {name: "Auditoria 2", description: "Descrição da auditoria 2", date: new Date(), project: {name: "Projeto 2", description: "Descrição do projeto 2"}}])
         }, 1000)
     }, [])
-
 
 
     function editar(){
@@ -42,7 +41,7 @@ export default function Dashboard() {
                     </div>
                 </div>
                 <section className="my-3 p-3 bg-body rounded shadow-sm">
-                    <ListProjetos list={[]} eventOnClick={editar}/>
+                    <ListProjetos list={projects} eventOnClick={editar}/>
                 </section>
                 <section className="my-3 p-3 bg-body rounded shadow-sm">
                     <ListCheckList list={[]} eventOnClick={editar}/>
