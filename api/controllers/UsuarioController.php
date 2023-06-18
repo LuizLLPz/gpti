@@ -18,6 +18,6 @@ class UsuarioController {
 
     static function cadastro($http) {
         if ($_SERVER['REQUEST_METHOD'] != 'POST') return $http->methodNotAllowed();
-        return UsuarioService::register($http);
+        return UsuarioService::cadastrar($http);
     }
 }
