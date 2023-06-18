@@ -21,8 +21,8 @@ export default function Home() {
           voluptas. Quisquam, quia voluptas. Quisquam, quia voluptas.
         </p>
         <div className="d-grid gap-2 d-sm-flex justify-content-sm-center">
-          <Link className="btn btn-primary btn-lg px-4 gap-3" href={'login'}>Cadastre-se</Link>
-          <Link className="btn btn-outline-secondary btn-lg px-4" href={'signin'}>Entrar</Link>
+          <Link className="btn btn-primary btn-lg px-4 gap-3" href={'register'}>Cadastre-se</Link>
+          <Link className="btn btn-outline-secondary btn-lg px-4" href={'login'}>Entrar</Link>
         </div>
         </div>
       </div>

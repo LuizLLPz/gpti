@@ -1,9 +1,13 @@
+'use client';
 import Link from "next/link";
 import { useForm } from "react-hook-form"
 
 import {User, UserDTO} from "./types/user";
 
-export default function Singin() {
+
+import {Button, Input} from "@/components";
+
+export default function Register() {
 
     const {register, handleSubmit} = useForm<User>();
 
@@ -19,22 +23,18 @@ export default function Singin() {
 
     return(
         <main>
-            <div>
+            <div className="px-4 py-2">
                 <h1>Cadastro</h1>
-                <form>
-                    <label htmlFor="username">Nome de usuário</label>
-                    <input type="text"  id="username" {...register('username')}/>
-
-                    <label htmlFor="name">Nome</label>
-                    <input type="text" id="name" {...register('name')}/>
-
-                    <label htmlFor="surname">Sobrenome</label>
-                    <input type="text" id="surname" {...register('surname')}/>
-
-                    <label htmlFor="password">Password</label>
-                    <input type="password" id="password"  {...register('password')}/>
-
-                    <button type="submit">Cadastrar usuário</button>
+                <form className="d-flex flex-column gap-2">
+                    <Input name="username" label="Nome de usuário" placeholder="Digite o nome de usuário" register={register}/>
+                    <div className="d-flex flex-row gap-sm-4 flex-wrap">
+                        <Input className="flex-sm-grow-1" name="name" label="Nome" placeholder="Digite o primeiro nome" register={register}/>
+                        <Input className="flex-sm-grow-1" name="surname" label="Sobrenome" placeholder="Digite o sobrenome" register={register}/>
+                    </div>
+                    <div>
+                        <Input name="password" label="Senha" placeholder="Digite a sua senha" register={register}/>
+                    </div>
+                    <Button onClick={handleSubmit(registerUser)} text="Cadastrar"/>
                 </form>
             </div>
             <Link href={"/"}>Cancelar</Link>
