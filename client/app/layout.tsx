@@ -28,7 +28,7 @@ export interface Checklist {
     name: String,
     description: String,
     lastUpdate: Date,
-    project: Project
+    projectID: number
 }
 
 export interface Auditoria {

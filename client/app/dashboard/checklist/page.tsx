@@ -1,35 +1,43 @@
 'use client';
 
-import { useEffect, useState } from "react";
-import { Checklist } from "../../layout";
+import {ChangeEvent, useEffect, useState} from "react";
+import { useForm } from "react-hook-form";
 
+import { Button, Input } from "@/components";
+import { getProjetosEmpresa, saveChecklist } from "@/app/dashboard/services";
+
+import { Checklist } from "../../layout";
 import Header from "../../header";
-import { Project } from "../types";
 import ItensChecklist from "./itensChecklist";
+import { Project } from "../types";
+
+
 
 export interface listCheck {
     item: string,
 }
 
 export default function Checklist() {
-    const [project, setProject] = useState<Project[]>()
+    const [projects, setProjects] = useState<Project[]>()
     const [ckecklist, setChecklist] = useState<Checklist[]>()
     const [listChecklist, setListChecklist] = useState<listCheck[]>()
     const [item, setItem] = useState<string>("")
+    const { handleSubmit, register,
+        setValue } = useForm<Checklist>()
+
 
     function adicionarList(novoItem: listCheck){
         if(listChecklist){
             setListChecklist([...listChecklist, novoItem])
         }
     }
-        
 
-    useEffect(
-        () => {
-        setTimeout(() => {
-            setProject([{name: "Projeto 1", description: "Descrição do projeto 1"}, {name: "Projeto 2", description: "Descrição do projeto 2"}, {name: "Projeto 3", description: "Descrição do projeto 3"}])
-            setChecklist([{name: "Checklist 1", description: "Descrição do checklist 1", lastUpdate: new Date(), project: {name: "Projeto 1", description: "Descrição do projeto 1"}}, {name: "Checklist 2", description: "Descrição do checklist 2", lastUpdate: new Date(), project: {name: "Projeto 2", description: "Descrição do projeto 2"}}])
-        })}, [])
+    useEffect(() => {
+        async function fetchData() {
+            setProjects(await getProjetosEmpresa())
+        }
+        fetchData()
+    }, [])
 
     return(
         <>
@@ -38,21 +46,24 @@ export default function Checklist() {
         <h1>Checklist</h1>
         <form>
             <div className="mb-3">
-                <label htmlFor="name" className="form-label">Nome</label>
-                <input type="text" className="form-control" id="name"/>
+                <Input name="name" label="Nome" placeholder="" type="text" register={register}/>
+                {/*<label htmlFor="name" className="form-label">Nome</label>*/}
+                {/*<input type="text" className="form-control" id="name"/>*/}
             </div>
             <div className="mb-3">
-                <label htmlFor="description" className="form-label">Descrição</label>
-                <input type="text" className="form-control" id="description"/>
+                <Input name="description" label="Descrição" placeholder="" type="text" register={register}/>
+                {/*<label htmlFor="description" className="form-label">Descrição</label>*/}
+                {/*<input type="text" className="form-control" id="description"/>*/}
             </div>
             <div className="mb-3">
                 <label htmlFor="project" className="form-label">Projeto</label>
-                <select className="form-select" aria-label="Default select example" id="project">
-                    <option selected>Selecione um projeto</option>
+                <select className="form-select" aria-label="Default select example" id="project"
+                        onChange={(e: ChangeEvent<HTMLSelectElement>) => setValue("projectID", Number.parseInt(e.target.value))}
+                >
                     {
-                        project?.map((project) => {
+                        projects?.map((project) => {
                             return(
-                                <option value={project.name}>{project.name}</option>
+                                <option  key={project.id} value={project.id}>{project.name}</option>
                             )
                         })
                     }
@@ -65,7 +76,7 @@ export default function Checklist() {
                 <ItensChecklist list={listChecklist}/>
                 
             </div>
-            <button type="submit" className="btn btn-primary">Adicionar</button>
+            <Button text="Adicionar" className="btn btn-primary" onClick={handleSubmit(saveChecklist)}/>
         </form>
 
         </main>
