@@ -1,6 +1,8 @@
 'use client';
 
+import Link from "next/link";
 import { MouseEventHandler } from "react";
+
 import { Project } from "../layout";
 
 interface ListProjetosProps {
@@ -29,7 +31,7 @@ export default function ListProjetos({list, eventOnClick}: ListProjetosProps) {
                         })
                     }
                 <small className="d-block text-end mt-3">
-                    <button className="btn btn-primary rounded-pill px-3">Adicionar</button>
+                    <Link className="btn btn-primary rounded-pill px-3" href="dashboard/projeto">Adicionar</Link>
                 </small>
             </div>
             </div>
@@ -47,7 +49,7 @@ export default function ListProjetos({list, eventOnClick}: ListProjetosProps) {
                                     </div>
                                 </div>
                 <small className="d-block text-end mt-3">
-                    <button className="btn btn-primary rounded-pill px-3">Adicionar</button>
+                    <Link className="btn btn-primary rounded-pill px-3" href="dashboard/projeto">Adicionar</Link>
                 </small>
             </div>
             </div>

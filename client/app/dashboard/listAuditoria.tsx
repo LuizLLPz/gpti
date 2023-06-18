@@ -1,7 +1,10 @@
 'use client';
 
-import { Auditoria, Project } from "../layout";
+import Link from "next/link";
 import { MouseEventHandler } from "react";
+
+import { Auditoria, Project } from "../layout";
+
 
 
 interface ListAuditoriaProps {
@@ -32,7 +35,7 @@ export default function ListAuditoria({list, eventOnClick}: ListAuditoriaProps) 
                         })
                     }
                 <small className="d-block text-end mt-3">
-                    <button className="btn btn-primary rounded-pill px-3">Adicionar</button>
+                    <Link className="btn btn-primary rounded-pill px-3" href="/dashboard/auditoria">Adicionar</Link>
                 </small>
             </div>
             </div>
@@ -50,7 +53,7 @@ export default function ListAuditoria({list, eventOnClick}: ListAuditoriaProps) 
                                     </div>
                                 </div>
                 <small className="d-block text-end mt-3">
-                    <button className="btn btn-primary rounded-pill px-3">Adicionar</button>
+                    <Link className="btn btn-primary rounded-pill px-3" href="/dashboard/auditoria">Adicionar</Link>
                 </small>
             </div>
             </div>

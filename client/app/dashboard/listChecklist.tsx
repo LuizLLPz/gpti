@@ -1,6 +1,8 @@
 'use Client';
 
+import Link from "next/link";
 import { MouseEventHandler } from "react";
+
 import { Checklist } from "../layout";
 
 interface ListChecklistProps {
@@ -31,7 +33,7 @@ export default function ListCheckList({list, eventOnClick}:ListChecklistProps) {
                         })
                     }
                 <small className="d-block text-end mt-3">
-                    <button className="btn btn-primary rounded-pill px-3">Adicionar</button>
+                    <Link className="btn btn-primary rounded-pill px-3" href="dashboard/checklist">Adicionar</Link>
                 </small>
             </div>
             </div>
@@ -49,7 +51,7 @@ export default function ListCheckList({list, eventOnClick}:ListChecklistProps) {
                                     </div>
                                 </div>
                 <small className="d-block text-end mt-3">
-                    <button className="btn btn-primary rounded-pill px-3">Adicionar</button>
+                    <Link className="btn btn-primary rounded-pill px-3" href="dashboard/checklist">Adicionar</Link>
                 </small>
             </div>
             </div>
