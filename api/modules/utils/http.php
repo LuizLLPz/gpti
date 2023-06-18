@@ -1,7 +1,7 @@
 <?php
 class Http {
     public int $status_code;
-    public mixed $response;
+    public ?Response $response;
     public bool $success;
     public array $params;
     public ?array $body;
@@ -10,7 +10,7 @@ class Http {
     public function __construct() {
         $this->success = true;
         $this->status_code = 200;
-        $this->response = [];
+        $this->response = null;
         $this->params = [];
         $this->body = [];
     }
