@@ -11,7 +11,7 @@ class ChecklistService {
         $idEmpresa = $model['IDEMPRESA'] ?? null;
         $nome = $model['NOME'] ?? null;
         $descricao = $model['DESCRICAO'] ?? null;
-        $itens = $model['CHECKLISTITENS'] ?? null;
+        $itens = $model['CHECKLISTITENS'] ?? [];
         if (!$idProjeto) return $http->badRequest("Informações insuficientes", "É necessário informar o id do projeto");
         if (!$idEmpresa) return $http->badRequest("Informações insuficientes", "É necessário informar o id da empresa");
         if (!$nome) return $http->badRequest("Informações insuficientes", "É necessário informar o nome do checklist");
