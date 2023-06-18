@@ -3,6 +3,7 @@ class ChecklistModel {
     public int $id;
     public int $idProjeto;
     public int $idEmpresa;
+    public [] $itens;
     public string $nome;
     public string $descricao;
 
@@ -22,9 +23,10 @@ class ChecklistModel {
 
     function salvar(): Http {
         global $connection;
+        $connection->beginTransaction();
         try {
             $sql = "INSERT INTO CHECKLIST (IDEMPRESA, IDPROJETO, NOME, DESCRICAO) VALUES (:IDEMPRESA, :IDPROJETO,
-                                                                      :NOME, :DESCRICAO)";
+                    :NOME, :DESCRICAO)";
             $query = $connection->prepare($sql);
             $query->bindParam(':IDEMPRESA', $this->idEmpresa);
             $query->bindParam(':IDPROJETO', $this->idProjeto);
@@ -32,8 +34,17 @@ class ChecklistModel {
             $query->bindParam(':DESCRICAO', $this->descricao);
             $query->execute();
             $this->id = $connection->lastInsertId();
+            foreach ($this->itens as $item) {
+                $titulo = $item->titulo;
+                $checkListItem = new ChecklistItem();
+                $checkListItem->idChecklist = $this->id;
+                $checkListItem->titulo = $titulo;
+                $checkListItem->salvar();
+            }
+            $connection->commit();
             return new Http(201, new Response("Checklist criado com sucesso!", $this));
         } catch (PDOException $e){
+            $connection->rollBack();
             return new Http(500, new Response("Erro ao criar checklist", $e->getMessage()));
         }
     }
@@ -42,5 +53,19 @@ class ChecklistModel {
 class ChecklistItem {
     public int $id;
     public int $idChecklist;
+    public string $titulo;
 
+    function salvar() {
+        global $connection;
+        try {
+            $sql = "INSERT INTO CHECKLIST_ITEM (IDCHECKLIST, TITULO) VALUES (:IDCHECKLIST, :TITULO)";
+            $query = $connection->prepare($sql);
+            $query->bindParam(':IDCHECKLIST', $this->idChecklist);
+            $query->bindParam(':TITULO', $this->titulo);
+            $query->execute();
+            $this->id = $connection->lastInsertId();
+        } catch (PDOException $e){
+            return new Http(500, new Response("Erro ao criar checklist", $e->getMessage()));
+        }
+    }
 }
