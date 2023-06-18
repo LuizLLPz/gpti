@@ -21,6 +21,12 @@ class Http {
         return $this;
     }
 
+    public function noContent(mixed $response): Http {
+        $this->status_code = 200;
+        $this->response = $response;
+        return $this;
+    }
+
     public function created(mixed $response): Http {
         $this->status_code = 201;
         $this->response = $response;
