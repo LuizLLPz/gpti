@@ -3,6 +3,7 @@ import {useForm} from "react-hook-form";
 
 import {Button, Input} from "@/components";
 import {User, UserDTO} from "@/types";
+import {usePageTitle} from "@/hooks";
 
 export default function Login() {
     async function login(model: User) {
@@ -22,6 +23,7 @@ export default function Login() {
             alert(json.title)
         }
     }
+    usePageTitle("Login")
     const {register, handleSubmit} = useForm<User>();
 
     return(

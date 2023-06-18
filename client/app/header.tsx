@@ -7,7 +7,6 @@ export default function Header() {
                 <li className="nav-item">
                     <a href="" className="nav-link active">HOME</a>
                     <a href="" className="nav-item">Sobre</a>
-
                 </li>
             </ul>
         </header>

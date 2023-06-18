@@ -1,13 +1,16 @@
 'use client';
 import Link from "next/link";
-import {useForm} from "react-hook-form"
 
+import {useForm} from "react-hook-form"
 import {Button, Input} from "@/components";
+import {usePageTitle} from "@/hooks/";
 import {User, UserDTO} from "@/types";
+
 
 export default function Register() {
 
     const {register, handleSubmit} = useForm<User>();
+    usePageTitle("Cadastro")
 
     async function registerUser(model: User) {
         const user: UserDTO = {
