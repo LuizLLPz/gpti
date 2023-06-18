@@ -5,6 +5,7 @@ import { Checklist, Project, Auditoria } from "../layout";
 import ListAuditoria from "./listAuditoria";
 import ListCheckList from "./listChecklist";
 import ListProjetos from "./listProjetos";
+import Header from "../header";
 
 export default function Dashboard() {
     const [project, setProject] = useState<Project[]>([])
@@ -26,26 +27,25 @@ export default function Dashboard() {
     }
 
     return(
-        <main>
-            <div className="d-flex flex-column flex-shrink-0 p-3 text-bg-dark"></div>
-            <div>
-                <h1>Dashboard</h1>
-                <section>
-                    <h2>Projetos</h2>
-                    <button>Novo projeto</button>
-                    <ListProjetos list={project} eventOnClick={editar}/>
+        <>
+        <Header />
+        <main className="container">
+                <div className="d-flex align-items-center p-3 my-3 text-white rounded shadow-sm" style={{background: "#0d6efd"}}>
+                    <div className="lh-1">
+                        <h1 className="h6 mb-0 text-white lh-1">Bem vindo,</h1>
+                        <h2>Dashboard</h2>
+                    </div>
+                </div>
+                <section className="my-3 p-3 bg-body rounded shadow-sm">
+                    <ListProjetos list={[]} eventOnClick={editar}/>
+                </section>
+                <section className="my-3 p-3 bg-body rounded shadow-sm">
+                    <ListCheckList list={[]} eventOnClick={editar}/>
                 </section>
                 <section>
-                    <h2>Checklists</h2>
-                    <button>Novo checklist</button>
-                    <ListCheckList list={checklist} eventOnClick={editar}/>
+                    <ListAuditoria list={[]} eventOnClick={editar}/>
                 </section>
-                <section>
-                    <h2>Auditoria</h2>
-                    <button>Nova auditoria</button>
-                    <ListAuditoria list={auditoria} eventOnClick={editar}/>
-                </section>
-            </div>
         </main>
+        </>
     )
 }

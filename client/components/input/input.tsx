@@ -6,14 +6,16 @@ type InputProps<T> = {
     label: string
     placeholder: string
     className?: string
-    register: UseFormRegister<T extends FieldValues ? any : any>;
+    register?: UseFormRegister<T extends FieldValues ? any : any>;
     type?: HTMLInputTypeAttribute
 }
 
 export function Input<T>({name, label, placeholder, className = '', register, type}: InputProps<T>): JSX.Element {
     return (
-        <div className={"d-flex w-auto flex-column " + className}>
+        <div className={"form-floating"}>
+            <input className="form-control" type={type} id={name} placeholder={placeholder} 
+            // {...register(name)}
+            />
             <label htmlFor={name}>{label}</label>
-            <input type={type} id={name} placeholder={placeholder} {...register(name)}/>
         </div>);
 }

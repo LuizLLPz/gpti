@@ -1,13 +1,13 @@
 'use client';
 import Link from "next/link";
-import {useForm} from "react-hook-form"
+// import {useForm} from "react-hook-form"
 
 import {Button, Input} from "@/components";
 import {User, UserDTO} from "@/types";
 
 export default function Register() {
-
-    const {register, handleSubmit} = useForm<User>();
+    
+    // const {register, handleSubmit} = useForm<User>();
 
     async function registerUser(model: User) {
         const user: UserDTO = {
@@ -29,26 +29,35 @@ export default function Register() {
     }
 
     return (
-        <main>
+        <main className="form-signin w-50 m-auto">
             <div className="px-4 py-2">
-                <h1>Cadastro</h1>
                 <form className="d-flex flex-column gap-2">
+                    <h1 className="h3 mb-3 fw-normals">Cadastro</h1>
                     <Input name="username" label="Nome de usuário" placeholder="Digite o nome de usuário"
-                           register={register}/>
+                        //    register={register}
+                        />
                     <div className="d-flex flex-row gap-sm-4 flex-wrap">
                         <Input className="flex-sm-grow-1" name="name" label="Nome" placeholder="Digite o primeiro nome"
-                               register={register}/>
+                            //    register={register}
+                        />
                         <Input className="flex-sm-grow-1" name="surname" label="Sobrenome"
-                               placeholder="Digite o sobrenome" register={register}/>
+                               placeholder="Digite o sobrenome" 
+                            //    register={register}
+                            />
                     </div>
                     <div>
                         <Input name="password" label="Senha" placeholder="Digite a sua senha"
-                               type="password" register={register}/>
+                               type="password" 
+                            //    register={register}
+                            />
+
                     </div>
-                    <Button onClick={handleSubmit(registerUser)} text="Cadastrar"/>
+                    <Button 
+                    // onClick={handleSubmit(registerUser)}
+                     text="Cadastrar"/>
+                    <Link className="btn btn-outline-secondary" href={"/"}>Cancelar</Link>
                 </form>
             </div>
-            <Link href={"/"}>Cancelar</Link>
         </main>
     )
 }

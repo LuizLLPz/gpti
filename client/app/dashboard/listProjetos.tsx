@@ -10,32 +10,47 @@ interface ListProjetosProps {
 export default function ListProjetos({list, eventOnClick}: ListProjetosProps) {
     if(list.length > 0){
         return(
-            <table>
-                <thead>
-                    <tr>
-                        <td>Nome</td>
-                        <td>Descrição</td>
-                        <td>Editar</td>
-                    </tr>
-                </thead>
-                <tbody>
+            <div className="my-3 p-3 bg-body rounded shadow-sm">
+            <h6 className="border-bottom pb-2 mb-0">Projetos</h6>
+            <div className="border-bottom pb-2 mb-0">
                     {
                         list.map((project, key) => {
                             return(
-                                <tr key={key}>
-                                    <td>{project.name}</td>
-                                    <td>{project.description}</td>
-                                    <td><button onClick={eventOnClick}>Editar</button></td>
-                                </tr>
+                                <div className="d-flex text-body-secondary pt-3" key={key}>
+                                    <div className="pb-3 mb-0 small lh-sm border-bottom w-100">
+                                        <div className="d-flex justify-content-between">
+                                            <strong className="text-gray-dark">{project.name}</strong>
+                                            <a href="#">Editar</a>
+                                        </div>
+                                        <span className="d-block">{project.description}</span>
+                                    </div>
+                                </div>
                             )
                         })
                     }
-                </tbody>
-            </table>
+                <small className="d-block text-end mt-3">
+                    <button className="btn btn-primary rounded-pill px-3">Adicionar</button>
+                </small>
+            </div>
+            </div>
         )
     } else {
         return(
-            <h3>Não possui projeto</h3>
+            <div className="my-3 p-3 bg-body rounded shadow-sm">
+            <h6 className="border-bottom pb-2 mb-0">Projeto</h6>
+            <div className="border-bottom pb-2 mb-0">
+                                <div className="d-flex text-body-secondary pt-3">
+                                    <div className="pb-3 mb-0 small lh-sm border-bottom w-100">
+                                        <div className="d-flex justify-content-between">
+                                            <strong className="text-gray-dark">Você não possui nenhum projeto</strong>
+                                        </div>
+                                    </div>
+                                </div>
+                <small className="d-block text-end mt-3">
+                    <button className="btn btn-primary rounded-pill px-3">Adicionar</button>
+                </small>
+            </div>
+            </div>
         )
     }
 }
