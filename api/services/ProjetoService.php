@@ -7,7 +7,7 @@ class ProjetoService {
         if (sizeof($projetos) == 0) {
             return $http->noContent("Nenhum projeto encontrado");
         }
-        return $http->ok($projetos);
+        return $http->ok(new Response(data: $projetos));
     }
 
     static function criarProjeto(mixed $body): Http {

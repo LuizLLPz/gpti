@@ -3,7 +3,7 @@ require "./services/ProjetoService.php";
 class ProjetoController {
     static function obterProjetosEmpresa(Http $http): Http {
         if ($_SERVER['REQUEST_METHOD'] != 'GET') return $http->methodNotAllowed();
-        $idempresa = $http->body['IDEMPRESA'] ?? null;
+        $idempresa = $http->params['IDEMPRESA'] ?? null;
         if ($idempresa) {
             return ProjetoService::obterProjetosEmpresa($idempresa);
         }
