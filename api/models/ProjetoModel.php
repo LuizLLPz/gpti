@@ -7,7 +7,7 @@ class ProjetoModel {
 
     static function obterProjetosEmpresa(int $idempresa): array{
         global $connection;
-        $sql = "SELECT * FROM PROJETO WHERE IDEMPRESA = :IDEMPRESA";
+        $sql = "SELECT * FROM PROJETO WHERE IDEMPRESA = :IDEMPRESA ORDER BY ID DESC";
         $query = $connection->prepare($sql);
         $query->bindParam(":IDEMPRESA", $idempresa);
         $query->execute();
