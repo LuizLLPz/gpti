@@ -13,7 +13,8 @@ export default function Login() {
         const data = await fetch('http://localhost:80/Usuario/login', {body: JSON.stringify(user), method: 'POST'})
         const json = await data.json();
         if (data.status < 400) {
-            alert(json)
+            alert("Login realizado com sucesso!")
+            sessionStorage.setItem('user', json.token)
             setTimeout(() => {
                 window.location.href = "/dashboard", 2000
             })
