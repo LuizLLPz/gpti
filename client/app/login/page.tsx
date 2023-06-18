@@ -3,11 +3,8 @@ import {useForm} from "react-hook-form";
 
 import {Button, Input} from "@/components";
 import {User, UserDTO} from "@/types";
-<<<<<<< HEAD
 import Link from "next/link";
-=======
-import {usePageTitle} from "@/hooks";
->>>>>>> ad761c8c0011cb5a069648aadbff431f38cfa674
+import { usePageTitle } from "@/hooks";
 
 export default function Login() {
     async function login(model: User) {
