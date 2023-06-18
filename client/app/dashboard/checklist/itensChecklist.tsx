@@ -1,7 +1,7 @@
-import { listCheck } from "./page"
+import {ChecklistItem} from "@/app/dashboard/types";
 
 export interface ItensChecklistProps {
-    list?: listCheck[]
+    list?: ChecklistItem[]
 }
 
 export default function ItensChecklist({list}: ItensChecklistProps) {
@@ -11,12 +11,12 @@ export default function ItensChecklist({list}: ItensChecklistProps) {
         <h6 className="border-bottom pb-2 mb-0">Lista dos itens</h6>
         <div className="border-bottom pb-2 mb-0">
                 {
-                    list.map((list, key) => {
+                    list.map((item, key) => {
                         return(
                             <div className="d-flex text-body-secondary pt-3" key={key}>
                                 <div className="pb-3 mb-0 small lh-sm border-bottom w-100">
                                     <div className="d-flex justify-content-between">
-                                        <strong className="text-gray-dark">{list.item}</strong>
+                                        <strong className="text-gray-dark">{item.title}</strong>
                                         <a href="#">Excluir</a>
                                     </div>
                                 </div>

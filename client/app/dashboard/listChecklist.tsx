@@ -46,7 +46,7 @@ export default function ListCheckList({list, eventOnClick}:ListChecklistProps) {
                                 <div className="d-flex text-body-secondary pt-3">
                                     <div className="pb-3 mb-0 small lh-sm border-bottom w-100">
                                         <div className="d-flex justify-content-between">
-                                            <strong className="text-gray-dark">Você não possui nenhum ckecklist</strong>
+                                            <strong className="text-gray-dark">Você não possui nenhum checklist</strong>
                                         </div>
                                     </div>
                                 </div>

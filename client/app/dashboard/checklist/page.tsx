@@ -4,12 +4,12 @@ import {ChangeEvent, useEffect, useState} from "react";
 import { useForm } from "react-hook-form";
 
 import { Button, Input } from "@/components";
+import { Checklist } from "@/app/dashboard/types";
 import { getProjetosEmpresa, saveChecklist } from "@/app/dashboard/services";
 
-import { Checklist } from "../../layout";
 import Header from "../../header";
 import ItensChecklist from "./itensChecklist";
-import { Project } from "../types";
+import {ChecklistItem, Project} from "../types";
 
 export interface listCheck {
     item: string,
@@ -17,17 +17,18 @@ export interface listCheck {
 
 export default function Checklist() {
     const [projects, setProjects] = useState<Project[]>()
-    const [ckecklist, setChecklist] = useState<Checklist[]>()
-    const [listChecklist, setListChecklist] = useState<listCheck[]>()
+    const [checklistItems, setChecklistItems] = useState<ChecklistItem[]>([])
     const [item, setItem] = useState<string>("")
     const { handleSubmit, register,
         setValue } = useForm<Checklist>()
 
 
-    function adicionarList(novoItem: listCheck){
-        if(listChecklist){
-            setListChecklist([...listChecklist, novoItem])
+    function adicionarList(novoItem: string){
+        const item: ChecklistItem = {
+            title: novoItem
         }
+        setValue("checklistItems", [...checklistItems, item])
+        setChecklistItems([...checklistItems, item])
     }
 
     useEffect(() => {
@@ -45,13 +46,9 @@ export default function Checklist() {
         <form>
             <div className="mb-3">
                 <Input name="name" label="Nome" placeholder="" type="text" register={register}/>
-                {/*<label htmlFor="name" className="form-label">Nome</label>*/}
-                {/*<input type="text" className="form-control" id="name"/>*/}
             </div>
             <div className="mb-3">
                 <Input name="description" label="Descrição" placeholder="" type="text" register={register}/>
-                {/*<label htmlFor="description" className="form-label">Descrição</label>*/}
-                {/*<input type="text" className="form-control" id="description"/>*/}
             </div>
             <div className="mb-3">
                 <label htmlFor="project" className="form-label">Projeto</label>
@@ -70,8 +67,9 @@ export default function Checklist() {
             <div className="mb-3">
                 <label htmlFor="add" className="form-label">Adicionar Item</label>
                 <input type="text" className="form-control" id="add" value={item} onChange={(e) => setItem(e.target.value)}/>
-                <button type="button" className="btn btn-primary" onClick={() => item ? adicionarList({item: item}) : console.log("nada")}>Adicionar no checklist</button>
-                <ItensChecklist list={listChecklist}/>
+                <button type="button" className="btn btn-primary" onClick={() => item && adicionarList(item)}>
+                    Adicionar no checklist</button>
+                <ItensChecklist list={checklistItems}/>
                 
             </div>
             <Button text="Adicionar" className="btn btn-primary" onClick={handleSubmit(saveChecklist)}/>

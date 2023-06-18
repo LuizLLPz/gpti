@@ -4,10 +4,11 @@ export async function saveChecklist(model: Checklist) {
     const checklist: ChecklistDTO = {
         IDEMPRESA: 1,
         IDPROJETO: model.projectID,
+        CHECKLISTITENS: model.checklistItems,
         NOME: model.name,
         DESCRICAO: model.description
     }
-    const data = await fetch('http://7f69-191-243-137-66.ngrok-free.app/Checklist/criarChecklist?XDEBUG_SESSION_START=11465',
+    const data = await fetch('http://localhost:80/Checklist/criarChecklist?XDEBUG_SESSION_START=11465',
         {body: JSON.stringify(checklist), method: 'POST'})
     const json = await data.json();
 
