@@ -1,6 +1,6 @@
 'use client';
 import Link from "next/link";
-import { useForm } from "react-hook-form"
+import {useForm} from "react-hook-form"
 
 import {User, UserDTO} from "./types/user";
 
@@ -19,18 +19,29 @@ export default function Register() {
             SENHA: model.password
         }
         const data = await fetch('http://localhost:80/Usuario/cadastro', {body: JSON.stringify(user), method: 'POST'})
-        console.log(data)
+        const json = await data.json();
+        if (data.status < 400) {
+            alert(json)
+            setTimeout(() => {
+                window.location.href = "/login", 2000
+            })
+        } else {
+            alert(json.title)
+        }
     }
 
-    return(
+    return (
         <main>
             <div className="px-4 py-2">
                 <h1>Cadastro</h1>
                 <form className="d-flex flex-column gap-2">
-                    <Input name="username" label="Nome de usuário" placeholder="Digite o nome de usuário" register={register}/>
+                    <Input name="username" label="Nome de usuário" placeholder="Digite o nome de usuário"
+                           register={register}/>
                     <div className="d-flex flex-row gap-sm-4 flex-wrap">
-                        <Input className="flex-sm-grow-1" name="name" label="Nome" placeholder="Digite o primeiro nome" register={register}/>
-                        <Input className="flex-sm-grow-1" name="surname" label="Sobrenome" placeholder="Digite o sobrenome" register={register}/>
+                        <Input className="flex-sm-grow-1" name="name" label="Nome" placeholder="Digite o primeiro nome"
+                               register={register}/>
+                        <Input className="flex-sm-grow-1" name="surname" label="Sobrenome"
+                               placeholder="Digite o sobrenome" register={register}/>
                     </div>
                     <div>
                         <Input name="password" label="Senha" placeholder="Digite a sua senha"
