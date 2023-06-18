@@ -2,10 +2,8 @@
 import Link from "next/link";
 import {useForm} from "react-hook-form"
 
-import {User, UserDTO} from "./types/user";
-
-
 import {Button, Input} from "@/components";
+import {User, UserDTO} from "@/types";
 
 export default function Register() {
 
