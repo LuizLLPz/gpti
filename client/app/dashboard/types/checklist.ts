@@ -3,7 +3,7 @@ export type Checklist = {
     companyID: number;
     projectID: number;
     name: string;
-    checklistItems: ChecklistItem[];
+    checklistItems?: ChecklistItem[];
     description: string;
 }
 
@@ -12,7 +12,7 @@ export type ChecklistDTO = {
     IDEMPRESA: number;
     IDPROJETO: number;
     NOME: string;
-    CHECKLISTITENS: ChecklistItemDTO[];
+    CHECKLISTITENS?: ChecklistItemDTO[];
     DESCRICAO: string;
 }
 

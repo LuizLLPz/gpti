@@ -1,10 +1,10 @@
-import {Checklist, ChecklistDTO, ChecklistItem} from "@/app/dashboard/types";
+import { Checklist, ChecklistDTO, ChecklistItem } from "@/app/dashboard/types";
 
 export async function saveChecklist(model: Checklist) {
     const checklist: ChecklistDTO = {
         IDEMPRESA: 1,
         IDPROJETO: model.projectID,
-        CHECKLISTITENS: model.checklistItems.map((item: ChecklistItem) => ({
+        CHECKLISTITENS: model.checklistItems?.map((item: ChecklistItem) => ({
             TITULO: item.title
         })),
         NOME: model.name,
@@ -16,9 +16,7 @@ export async function saveChecklist(model: Checklist) {
 
     if (data.status < 400) {
         alert(json.message)
-        setTimeout(() => {
-            window.location.href = "/dashboard", 2000
-        })
+        setTimeout(() => window.location.href = "/dashboard", 2000)
     }
     else {
         alert(json.message)

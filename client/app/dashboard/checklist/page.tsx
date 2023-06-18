@@ -55,6 +55,7 @@ export default function Checklist() {
                 <select className="form-select" aria-label="Default select example" id="project"
                         onChange={(e: ChangeEvent<HTMLSelectElement>) => setValue("projectID", Number.parseInt(e.target.value))}
                 >
+                    <option selected={true}>Selecione um projeto</option>
                     {
                         projects?.map((project) => {
                             return(
