@@ -7,7 +7,7 @@ class UsuarioModel {
     public string $SOBRENOME;
     public string $SENHA;
 
-    static function getWithName($name): ?UsuarioModel {
+    static function obterPorNome($name): ?UsuarioModel {
         global $connection;
         $sql = "SELECT * FROM USUARIO WHERE NOMEUSUARIO = :NOMEUSUARIO";
         $query = $connection->prepare($sql);
@@ -18,10 +18,10 @@ class UsuarioModel {
         return $user;
     }
 
-    static function save(?array $model): bool | Http  {
+    static function salvar(?array $model): bool | Http  {
         try {
             global $connection;
-            $existe = UsuarioModel::getWithName($model['NOMEUSUARIO'] ?? '') != null;
+            $existe = UsuarioModel::obterPorNome($model['NOMEUSUARIO'] ?? '') != null;
             if ($existe) {
                 $http = new Http();
                 return $http->conflict("Usuário já existe");
