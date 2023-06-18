@@ -1,4 +1,5 @@
 <?php
+require "./services/ProjetoService.php";
 class ProjetoController {
     static function obterProjetosEmpresa(Http $http): Http {
         if ($_SERVER['REQUEST_METHOD'] != 'GET') return $http->methodNotAllowed();
