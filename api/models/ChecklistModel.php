@@ -35,7 +35,8 @@ class ChecklistModel {
             $query->execute();
             $this->id = $connection->lastInsertId();
             foreach ($this->itens as $item) {
-                $titulo = $item->titulo;
+                $titulo = $item['TITULO'] ?? null;
+                if (!$titulo) continue;
                 $checkListItem = new ChecklistItem();
                 $checkListItem->idChecklist = $this->id;
                 $checkListItem->titulo = $titulo;
