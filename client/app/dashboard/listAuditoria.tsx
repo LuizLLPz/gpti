@@ -1,5 +1,5 @@
 'use client';
-import { ArrowFunction } from "typescript";
+
 import { Auditoria, Project } from "../layout";
 import { MouseEventHandler } from "react";
 
@@ -12,35 +12,48 @@ interface ListAuditoriaProps {
 export default function ListAuditoria({list, eventOnClick}: ListAuditoriaProps) {
     if(list.length){
         return(
-            <table>
-                <thead>
-                    <tr>
-                        <td>Nome</td>
-                        <td>Descrição</td>
-                        <td>Data de aplicação</td>
-                        <td>Projeto</td>
-                    </tr>
-                </thead>
-                <tbody>
+            <div className="my-3 p-3 bg-body rounded shadow-sm">
+            <h6 className="border-bottom pb-2 mb-0">Auditoria</h6>
+            <div className="border-bottom pb-2 mb-0">
                     {
-                        list.map((auditoria, key) => {
+                        list.map((list, key) => {
                             return(
-                                <tr key={key}>
-                                    <td>{auditoria.name}</td>
-                                    <td>{auditoria.description}</td>
-                                    <td>{auditoria.date.toUTCString()}</td>
-                                    <td>{auditoria.project.name}</td>
-                                    <td><button onClick={eventOnClick}>Editar</button></td>
-                                </tr>
+                                <div className="d-flex text-body-secondary pt-3" key={key}>
+                                    <div className="pb-3 mb-0 small lh-sm border-bottom w-100">
+                                        <div className="d-flex justify-content-between">
+                                            <strong className="text-gray-dark">{list.name}</strong>
+                                            <strong className="text-gray-dark">{list.date.toUTCString()}</strong>
+                                            <a href="#">Editar</a>
+                                        </div>
+                                        <span className="d-block">{list.description}</span>
+                                    </div>
+                                </div>
                             )
                         })
                     }
-                </tbody>
-            </table>
+                <small className="d-block text-end mt-3">
+                    <button className="btn btn-primary rounded-pill px-3">Adicionar</button>
+                </small>
+            </div>
+            </div>
         )
     } else {
         return(
-            <h3>Não possui auditoria</h3>
+            <div className="my-3 p-3 bg-body rounded shadow-sm">
+            <h6 className="border-bottom pb-2 mb-0">Auditoria</h6>
+            <div className="border-bottom pb-2 mb-0">
+                                <div className="d-flex text-body-secondary pt-3">
+                                    <div className="pb-3 mb-0 small lh-sm border-bottom w-100">
+                                        <div className="d-flex justify-content-between">
+                                            <strong className="text-gray-dark">Você não possui nenhuma auditoria</strong>
+                                        </div>
+                                    </div>
+                                </div>
+                <small className="d-block text-end mt-3">
+                    <button className="btn btn-primary rounded-pill px-3">Adicionar</button>
+                </small>
+            </div>
+            </div>
         )
     }
 }
