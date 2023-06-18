@@ -12,7 +12,7 @@ export default function Login() {
             NOMEUSUARIO: model.username,
             SENHA: model.password
         }
-        const data = await fetch('http://localhost:80/Usuario/login', {body: JSON.stringify(user), method: 'POST'})
+        const data = await fetch('https://7f69-191-243-137-66.ngrok-free.app/Usuario/login', {body: JSON.stringify(user), method: 'POST'})
         const json = await data.json();
         if (data.status < 400) {
             alert("Login realizado com sucesso!")

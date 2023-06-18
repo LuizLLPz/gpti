@@ -8,9 +8,9 @@ import ListProjetos from "./listProjetos";
 import Header from "../header";
 
 export default function Dashboard() {
-    const [project, setProject] = useState<Project[]>([])
-    const [checklist, setChecklist] = useState<Checklist[]>([])
-    const [auditoria, setAuditoria] = useState<Auditoria[]>([])
+    const [project, setProject] = useState<Project[]>()
+    const [checklist, setChecklist] = useState<Checklist[]>()
+    const [auditoria, setAuditoria] = useState<Auditoria[]>()
 
     useEffect(() => {
         setTimeout(() => {
@@ -37,13 +37,13 @@ export default function Dashboard() {
                     </div>
                 </div>
                 <section className="my-3 p-3 bg-body rounded shadow-sm">
-                    <ListProjetos list={[]} eventOnClick={editar}/>
+                    <ListProjetos list={project} eventOnClick={editar}/>
                 </section>
                 <section className="my-3 p-3 bg-body rounded shadow-sm">
-                    <ListCheckList list={[]} eventOnClick={editar}/>
+                    <ListCheckList list={checklist} eventOnClick={editar}/>
                 </section>
                 <section>
-                    <ListAuditoria list={[]} eventOnClick={editar}/>
+                    <ListAuditoria list={auditoria} eventOnClick={editar}/>
                 </section>
         </main>
         </>

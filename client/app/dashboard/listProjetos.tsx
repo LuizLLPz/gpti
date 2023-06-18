@@ -4,11 +4,11 @@ import { MouseEventHandler } from "react";
 import { Project } from "../layout";
 
 interface ListProjetosProps {
-    list: Project[],
+    list?: Project[],
     eventOnClick: MouseEventHandler<HTMLButtonElement> | undefined
 }
 export default function ListProjetos({list, eventOnClick}: ListProjetosProps) {
-    if(list.length > 0){
+    if(list){
         return(
             <div className="my-3 p-3 bg-body rounded shadow-sm">
             <h6 className="border-bottom pb-2 mb-0">Projetos</h6>

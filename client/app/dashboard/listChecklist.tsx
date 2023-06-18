@@ -4,12 +4,12 @@ import { MouseEventHandler } from "react";
 import { Checklist } from "../layout";
 
 interface ListChecklistProps {
-    list: Checklist[],
+    list?: Checklist[],
     eventOnClick: MouseEventHandler<HTMLButtonElement> | undefined
 }
 
 export default function ListCheckList({list, eventOnClick}:ListChecklistProps) {
-    if(list.length > 0){
+    if(list){
         return(
             <div className="my-3 p-3 bg-body rounded shadow-sm">
             <h6 className="border-bottom pb-2 mb-0">Checklist</h6>

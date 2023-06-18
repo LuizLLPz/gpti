@@ -5,12 +5,12 @@ import { MouseEventHandler } from "react";
 
 
 interface ListAuditoriaProps {
-    list: Auditoria[],
+    list?: Auditoria[],
     eventOnClick: MouseEventHandler<HTMLButtonElement> | undefined
 }
 
 export default function ListAuditoria({list, eventOnClick}: ListAuditoriaProps) {
-    if(list.length){
+    if(list){
         return(
             <div className="my-3 p-3 bg-body rounded shadow-sm">
             <h6 className="border-bottom pb-2 mb-0">Auditoria</h6>
