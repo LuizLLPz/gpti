@@ -8,7 +8,7 @@ class ChecklistModel {
     function salvar(): Http {
         global $connection;
         try {
-            $sql = "INSERT INTO checklist (IDPROJETO, NOME, DESCRICAO) VALUES (:IDPROJETO, :NOME, :DESCRICAO)";
+            $sql = "INSERT INTO CHECKLIST (IDPROJETO, NOME, DESCRICAO) VALUES (:IDPROJETO, :NOME, :DESCRICAO)";
             $query = $connection->prepare($sql);
             $query->bindParam(':IDPROJETO', $this->idProjeto);
             $query->bindParam(':NOME', $this->nome);
@@ -20,4 +20,10 @@ class ChecklistModel {
             return new Http(500, new Response("Erro ao criar checklist", $e->getMessage()));
         }
     }
+}
+
+class ChecklistItem {
+    public int $id;
+    public int $idChecklist;
+
 }
