@@ -21,7 +21,7 @@ export default function Register() {
         const data = await fetch('https://7f69-191-243-137-66.ngrok-free.app/Usuario/cadastro', {body: JSON.stringify(user), method: 'POST'})
         const json = await data.json();
         if (data.status < 400) {
-            alert(json)
+            alert(json.title)
             setTimeout(() => {
                 window.location.href = "/login", 2000
             })
