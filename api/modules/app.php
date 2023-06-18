@@ -7,7 +7,9 @@ class App {
     }
 
     function start(): void{
+        global $env;
         $http = new Http();
+        header("Access-Control-Allow-Origin: ".$env['ACCESS_ORIGIN']);
         foreach($this->pipeline as $mid) {
             $http = $mid->start($http);
             http_response_code($http->status_code);
