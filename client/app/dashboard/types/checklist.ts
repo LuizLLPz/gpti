@@ -12,7 +12,7 @@ export type ChecklistDTO = {
     IDEMPRESA: number;
     IDPROJETO: number;
     NOME: string;
-    CHECKLISTITENS: ChecklistItem[];
+    CHECKLISTITENS: ChecklistItemDTO[];
     DESCRICAO: string;
 }
 
@@ -20,4 +20,10 @@ export type ChecklistItem = {
     id?: number;
     checklistID?: number;
     title: string;
+}
+
+export type ChecklistItemDTO = {
+    ID?: number;
+    IDCHECKLIST?: number;
+    TITULO: string;
 }

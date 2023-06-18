@@ -1,10 +1,12 @@
-import {Checklist, ChecklistDTO} from "@/app/dashboard/types";
+import {Checklist, ChecklistDTO, ChecklistItem} from "@/app/dashboard/types";
 
 export async function saveChecklist(model: Checklist) {
     const checklist: ChecklistDTO = {
         IDEMPRESA: 1,
         IDPROJETO: model.projectID,
-        CHECKLISTITENS: model.checklistItems,
+        CHECKLISTITENS: model.checklistItems.map((item: ChecklistItem) => ({
+            TITULO: item.title
+        })),
         NOME: model.name,
         DESCRICAO: model.description
     }
