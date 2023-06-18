@@ -30,7 +30,7 @@ export default function Login() {
     return(
         <div className="d-flex align-items-center py-4 bg-body-tertiary">
         <main className="form-signin w-90 m-auto">
-                <form>
+                <form className="gap-sm-4">
                 <h1 className="h3 mb-3 fw-normal">Log In</h1>
                     <Input name="username" label="Nome de usuário"
                            placeholder="Digite o nome de usuário"
