@@ -11,8 +11,6 @@ import Header from "../../header";
 import ItensChecklist from "./itensChecklist";
 import { Project } from "../types";
 
-
-
 export interface listCheck {
     item: string,
 }

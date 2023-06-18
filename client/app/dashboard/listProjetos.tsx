@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { MouseEventHandler } from "react";
 
-import { Project } from "../layout";
+import { Project } from "@/app/dashboard/types";
 
 interface ListProjetosProps {
     list?: Project[],
