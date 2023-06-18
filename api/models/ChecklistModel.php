@@ -3,7 +3,7 @@ class ChecklistModel {
     public int $id;
     public int $idProjeto;
     public int $idEmpresa;
-    public [] $itens;
+    public array $itens;
     public string $nome;
     public string $descricao;
 
