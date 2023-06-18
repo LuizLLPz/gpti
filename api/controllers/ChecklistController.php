@@ -3,7 +3,9 @@ require "./services/ChecklistService.php";
 class ChecklistController {
     static function getChecklistsEmpresa(Http $http): Http {
         if ($_SERVER['REQUEST_METHOD'] != 'GET') return $http->methodNotAllowed();
-        return ChecklistService::getChecklistsEmpresa($http->query);
+        $idempresa = $http->params['IDEMPRESA'];
+        if (!$idempresa) return $http->badRequest("Informações insuficientes", "É necessário informar o id da empresa");
+        return ChecklistService::getChecklistsEmpresa($idempresa);
     }
 
     static function criarChecklist(Http $http): Http {

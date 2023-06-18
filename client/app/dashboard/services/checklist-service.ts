@@ -7,7 +7,7 @@ export async function saveChecklist(model: Checklist) {
         NOME: model.name,
         DESCRICAO: model.description
     }
-    const data = await fetch('https://7f69-191-243-137-66.ngrok-free.app/Checklist/criarChecklist?XDEBUG_SESSION_START=11465',
+    const data = await fetch('http://7f69-191-243-137-66.ngrok-free.app/Checklist/criarChecklist?XDEBUG_SESSION_START=11465',
         {body: JSON.stringify(checklist), method: 'POST'})
     const json = await data.json();
 
@@ -23,7 +23,7 @@ export async function saveChecklist(model: Checklist) {
 }
 
 export async function getChecklistsEmpresa(): Promise<Checklist[]> {
-    const data = await fetch('https://7f69-191-243-137-66.ngrok-free.app/Checklist/obterChecklistsEmpresa?IDEMPRESA=1&XDEBUG_SESSION_START=11465?')
+    const data = await fetch('http://localhost:80/Checklist/getChecklistsEmpresa?IDEMPRESA=1&XDEBUG_SESSION_START=11465?')
     const json = await data.json();
     const checklists: ChecklistDTO[] = json.data
     return checklists.map((checklist: ChecklistDTO) => ({

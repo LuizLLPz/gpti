@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { MouseEventHandler } from "react";
 
-import { Checklist } from "../layout";
+import { Checklist } from "@/app/dashboard/types";
 
 interface ListChecklistProps {
     list?: Checklist[],
@@ -23,7 +23,7 @@ export default function ListCheckList({list, eventOnClick}:ListChecklistProps) {
                                     <div className="pb-3 mb-0 small lh-sm border-bottom w-100">
                                         <div className="d-flex justify-content-between">
                                             <strong className="text-gray-dark">{list.name}</strong>
-                                            <strong className="text-gray-dark">{list.lastUpdate.toUTCString()}</strong>
+                                            {/*<strong className="text-gray-dark">{list.lastUpdate.toUTCString()}</strong>*/}
                                             <a href="#">Editar</a>
                                         </div>
                                         <span className="d-block">{list.description}</span>
