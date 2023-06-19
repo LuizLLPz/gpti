@@ -24,19 +24,17 @@ export default function Dashboard() {
         <>
         <Header />
         <main className="container">
+        <div className="d-flex align-items-center p-3 my-3 text-white rounded shadow-sm" style={{background: "#0d6efd"}}>
+            <div className="lh-1">
+                <h1 className="h1 mb-0 text-white lh-1">Projetos,</h1>
+                <h2 className="h6">Adicione novos projetos</h2>
+            </div>
+        </div>
         <form>
-            <div className="mb-3">
-                <Input name="name" label="Nome:" placeholder="" register={register}/>
-                {/*<label htmlFor="name" className="form-label">Nome</label>*/}
-                {/*<input type="text" className="form-control" id="name"/>*/}
-            </div>
-            <div className="mb-3">
-                <Input name="description" label="Descrição:" placeholder="" register={register}/>
-                {/*<label htmlFor="description" className="form-label">Descrição</label>*/}
-                {/*<input type="text" className="form-control" id="description"/>*/}
-            </div>
-            <Button text="Adicionar" onClick={handleSubmit(createProject)}/>
-            {/*<button type="submit" className="btn btn-primary">Adicionar</button>*/}
+        <Input name="name" label="Nome" placeholder="" register={register}/>
+        <Input name="description" label="Descrição" placeholder="" register={register}/>
+        <Button text="Adicionar" onClick={handleSubmit(createProject)}/>
+        {/*<button type="submit" className="btn btn-primary">Adicionar</button>*/}
 </form>
 
         </main>

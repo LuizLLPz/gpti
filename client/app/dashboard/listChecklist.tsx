@@ -11,7 +11,8 @@ interface ListChecklistProps {
 }
 
 export default function ListCheckList({list, eventOnClick}:ListChecklistProps) {
-    if(list){
+    console.log(list)
+    if(list && list.length > 0){
         return(
             <div className="my-3 p-3 bg-body rounded shadow-sm">
             <h6 className="border-bottom pb-2 mb-0">Checklist</h6>

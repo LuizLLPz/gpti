@@ -13,6 +13,7 @@ interface ListAuditoriaProps {
 }
 
 export default function ListAuditoria({list, eventOnClick}: ListAuditoriaProps) {
+    console.log(list)
     if(list){
         return(
             <div className="my-3 p-3 bg-body rounded shadow-sm">

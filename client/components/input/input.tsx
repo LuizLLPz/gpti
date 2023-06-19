@@ -12,10 +12,10 @@ type InputProps<T> = {
 
 export function Input<T>({name, label, placeholder, className = '', register, type}: InputProps<T>): JSX.Element {
     return (
-        <div className={"form-floating"}>
+        <div className={"mb-3"}>
+            <label className="form-label" htmlFor={name}>{label}</label>
             <input className="form-control" type={type} id={name} placeholder={placeholder}
-                   {...register(name)}
+                    {...register(name)}
             />
-            <label htmlFor={name}>{label}</label>
         </div>);
 }
