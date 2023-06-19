@@ -25,7 +25,7 @@ export default function ListCheckList({list, eventOnClick}:ListChecklistProps) {
                                         <div className="d-flex justify-content-between">
                                             <strong className="text-gray-dark">{list.name}</strong>
                                             {/*<strong className="text-gray-dark">{list.lastUpdate.toUTCString()}</strong>*/}
-                                            <a href="#">Editar</a>
+                                            <a href="#">Excluir</a>
                                         </div>
                                         <span className="d-block">{list.description}</span>
                                     </div>

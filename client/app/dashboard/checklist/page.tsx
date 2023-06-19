@@ -10,6 +10,7 @@ import { getProjetosEmpresa, saveChecklist } from "@/app/dashboard/services";
 import Header from "../../header";
 import ItensChecklist from "./itensChecklist";
 import {ChecklistItem, Project} from "../types";
+import Link from "next/link";
 
 export interface listCheck {
     item: string,
@@ -89,7 +90,10 @@ export default function Checklist() {
                 <ItensChecklist excluirItem={excluirList} list={checklistItems} excluirAll={excluirList}/>
                 
             </div>
-            <Button text="Adicionar" className="btn btn-primary" onClick={handleSubmit(saveChecklist)}/>
+            <div className="" style={{width:"100%"}}>
+                <Button text="Adicionar" onClick={handleSubmit(saveChecklist)}/>
+                <Link href={"/dashboard"} className="btn mt-auto mb-auto ms-3 btn-outline-secondary">Cancelar</Link>
+            </div>
         </form>
 
         </main>

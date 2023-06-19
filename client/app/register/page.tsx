@@ -4,6 +4,7 @@ import {useForm} from "react-hook-form"
 import {Button, Input} from "@/components";
 import {usePageTitle} from "@/hooks/";
 import {User, UserDTO} from "@/types";
+import Header from "../header";
 
 
 export default function Register() {
@@ -31,7 +32,9 @@ export default function Register() {
     }
 
     return (
-        <main className="form-signin w-50 m-auto">
+        <>
+        <Header />
+        <main className="form-signin w-70 m-auto">
             <div className="px-4 py-2">
                 <form className="d-flex flex-column gap-2">
                     <h1 className="h3 mb-3 fw-normals">Cadastro</h1>
@@ -54,12 +57,17 @@ export default function Register() {
                             />
 
                     </div>
-                    <Button 
-                    onClick={handleSubmit(registerUser)}
-                     text="Cadastrar"/>
-                    <Link className="btn btn-outline-secondary" href={"/"}>Cancelar</Link>
+                    <div className="d-flex align-items-center justify-content-center">
+                        <Button
+                            onClick={handleSubmit(registerUser)}
+                            text="Cadastrar"
+                            className="w-50"
+                        />
+                        <Link className="w-50 btn mt-autoo ms-5 btn-outline-secondary" href={"/"}>Cancelar</Link>
+                    </div>
                 </form>
             </div>
         </main>
+        </>
     )
 }

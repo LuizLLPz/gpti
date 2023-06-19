@@ -7,6 +7,7 @@ import Header from "../../header";
 import {useForm} from "react-hook-form";
 import {createProject} from "../services/projeto-service"
 import {Project, ProjectDTO} from "@/app/dashboard/types";
+import Link from "next/link";
 
 export default function Dashboard() {
     const [project, setProject] = useState<Project[]>([])
@@ -34,6 +35,7 @@ export default function Dashboard() {
         <Input name="name" label="Nome" placeholder="" register={register}/>
         <Input name="description" label="Descrição" placeholder="" register={register}/>
         <Button text="Adicionar" onClick={handleSubmit(createProject)}/>
+        <Link href="/dashboard" className="btn ms-2 btn-outline-secondary">Cancelar</Link>
         {/*<button type="submit" className="btn btn-primary">Adicionar</button>*/}
 </form>
 

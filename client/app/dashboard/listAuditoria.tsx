@@ -17,7 +17,7 @@ export default function ListAuditoria({list, eventOnClick}: ListAuditoriaProps) 
     if(list){
         return(
             <div className="my-3 p-3 bg-body rounded shadow-sm">
-            <h6 className="border-bottom pb-2 mb-0">Auditoria</h6>
+            <h6 className="border-bottom pb-2 mb-0">Auditorias</h6>
             <div className="border-bottom pb-2 mb-0">
                     {
                         list.map((list, key) => {
@@ -27,7 +27,7 @@ export default function ListAuditoria({list, eventOnClick}: ListAuditoriaProps) 
                                         <div className="d-flex justify-content-between">
                                             <strong className="text-gray-dark">{list.name}</strong>
                                             <strong className="text-gray-dark">{list.date.toUTCString()}</strong>
-                                            <a href="#">Editar</a>
+                                            <a href="#">Excluir</a>
                                         </div>
                                         <span className="d-block">{list.description}</span>
                                     </div>

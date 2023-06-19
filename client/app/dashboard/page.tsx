@@ -65,7 +65,7 @@ export default function Dashboard() {
                     </div>
                 </div>
                 <section className="my-3 p-3 bg-body rounded shadow-sm">
-                    <ListProjetos list={projects} eventOnClick={editar}/>
+                    <ListProjetos list={[{name:"A", description:"ABC", id:1}]} eventOnClick={editar}/>
                 </section>
                 <section className="my-3 p-3 bg-body rounded shadow-sm">
                     <ListCheckList list={checklists} eventOnClick={editar}/>
