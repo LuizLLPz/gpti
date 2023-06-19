@@ -9,17 +9,8 @@ import {createProject} from "../services/projeto-service"
 import {Project, ProjectDTO} from "@/app/dashboard/types";
 import Link from "next/link";
 
-export default function Dashboard() {
-    const [project, setProject] = useState<Project[]>([])
-
+export default function Projeto() {
     const {register, handleSubmit} = useForm<Project>();
-
-    useEffect(
-        () => {
-        setTimeout(() => {
-            setProject([{name: "Projeto 1", description: "Descrição do projeto 1"}, {name: "Projeto 2", description: "Descrição do projeto 2"}])
-        })
-    }, [])
 
     return(
         <>

@@ -19,7 +19,7 @@ export default function Register() {
             SOBRENOME: model.surname,
             SENHA: model.password
         }
-        const data = await fetch('https://7f69-191-243-137-66.ngrok-free.app/Usuario/cadastro', {body: JSON.stringify(user), method: 'POST'})
+        const data = await fetch('https://localhost:80/Usuario/cadastro', {body: JSON.stringify(user), method: 'POST'})
         const json = await data.json();
         if (data.status < 400) {
             alert(json.title)

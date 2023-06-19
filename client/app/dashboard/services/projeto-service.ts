@@ -7,7 +7,7 @@ export async function createProject(model: Project) {
         DESCRICAO: model.description,
     };
     const data = await fetch(
-        "https://7f69-191-243-137-66.ngrok-free.app/Projeto/criarProjeto?XDEBUG_SESSION_START=11465",
+        "https://localhost:443/Projeto/criarProjeto?XDEBUG_SESSION_START=11465",
         { body: JSON.stringify(project), method: "POST" }
     );
     const json = await data.json();
@@ -23,7 +23,7 @@ export async function createProject(model: Project) {
 
 export async function getProjetosEmpresa(): Promise<Project[]> {
     const data = await fetch(
-        "https://7f69-191-243-137-66.ngrok-free.app/Projeto/obterProjetosEmpresa?IDEMPRESA=1"
+        "https://localhost:80/Projeto/obterProjetosEmpresa?IDEMPRESA=1"
     );
     const json = await data.json();
     const projetos: ProjectDTO[] = json.data;

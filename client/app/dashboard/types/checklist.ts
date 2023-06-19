@@ -5,7 +5,7 @@ export type Checklist = {
     name: string;
     checklistItems?: ChecklistItem[];
     description: string;
-}
+};
 
 export type ChecklistDTO = {
     ID?: number;
@@ -14,16 +14,22 @@ export type ChecklistDTO = {
     NOME: string;
     CHECKLISTITENS?: ChecklistItemDTO[];
     DESCRICAO: string;
-}
+};
+
+export type Results = {
+    info: ChecklistItem;
+    conforme: boolean;
+};
 
 export type ChecklistItem = {
-    id?: number;
+    id: number;
     checklistID?: number;
     title: string;
-}
+    check?: boolean;
+};
 
 export type ChecklistItemDTO = {
     ID?: number;
     IDCHECKLIST?: number;
     TITULO: string;
-}
+};
