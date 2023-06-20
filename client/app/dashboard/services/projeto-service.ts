@@ -6,10 +6,11 @@ export async function createProject(model: Project) {
         NOME: model.name,
         DESCRICAO: model.description,
     };
-    const data = await fetch(
-        "https://localhost:443/Projeto/criarProjeto?XDEBUG_SESSION_START=11465",
-        { body: JSON.stringify(project), method: "POST" }
-    );
+    const data = await fetch("http://localhost:80/Projeto/criarProjetos", {
+        body: JSON.stringify(project),
+        method: "POST",
+        mode: "cors",
+    });
     const json = await data.json();
     if (data.status < 400) {
         alert(json.message);
