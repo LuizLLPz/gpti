@@ -5,6 +5,7 @@ import {Button, Input} from "@/components";
 import {User, UserDTO} from "@/types";
 import Link from "next/link";
 import { usePageTitle } from "@/hooks";
+import Header from "../header";
 
 export default function Login() {
     async function login(model: User) {
@@ -28,19 +29,31 @@ export default function Login() {
     const {register, handleSubmit} = useForm<User>();
 
     return(
+        <div className="">
+        <Header />
         <div className="d-flex align-items-center py-4 bg-body-tertiary">
-        <main className="form-signin w-90 m-auto">
+        <main className="form-signin mx-auto">
+                <h1 className="h3 mb-3">Entrar</h1>
                 <form className="gap-sm-4">
-                <h1 className="h3 mb-3 fw-normal">Log In</h1>
-                    <Input name="username" label="Nome de usuário"
-                           placeholder="Digite o nome de usuário"
+                    <Input name="username" 
+                            label="Nome de usuário" 
+                            placeholder="Digite o nome de usuário"
                             register={register}
-                            />
-                    <Input name="password" type="password" label="Senha" placeholder="Digite a senha" register={register}/>
-                    <Button onClick={handleSubmit(login)} text="Entrar"/>
+                    />
+                    <Input name="password" 
+                            type="password" 
+                            label="Senha" 
+                            placeholder="Digite a senha" 
+                            register={register}
+                    />
+                    <Button onClick={handleSubmit(login)} 
+                            text="Entrar"
+                            className="w-100"
+                        />
                     <Link className="btn btn-outline-secondary w-100" href="/">Cancelar</Link>
                 </form>
         </main>
+        </div>
         </div>
     )
 }

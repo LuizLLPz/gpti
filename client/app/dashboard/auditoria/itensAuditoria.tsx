@@ -1,14 +1,25 @@
-import {ChecklistItem} from "@/app/dashboard/types";
-import { MouseEventHandler } from "react";
-import ListCheckList from "../listChecklist";
+'use client';
 
+import { useEffect, useState } from "react";
+import {ChecklistItem} from "../types";
+import { set } from "react-hook-form";
 export interface ItensChecklistProps {
-    list?: ChecklistItem[],
-    excluirItem?: any,
-    excluirAll?: any,
+    list: ChecklistItem[]
 }
 
-export default function ItensChecklist({list, excluirItem, excluirAll}: ItensChecklistProps) {
+export default function ItensAuditoria({list}: ItensChecklistProps) {
+    const [listAuditoria, setListAuditoria] = useState<ChecklistItem[]>(list)
+
+
+    useEffect(() => {
+        listAuditoria.map((item) => {
+            setListAuditoria([...listAuditoria, {id: item.id, check: false, title: item.title} as ChecklistItem])
+        })
+    }, [])
+
+
+
+
     if(list){
     return(
         <div className="my-3 p-3 bg-body rounded shadow-sm">
@@ -21,7 +32,8 @@ export default function ItensChecklist({list, excluirItem, excluirAll}: ItensChe
                                 <div className="pb-3 mb-0 small lh-sm border-bottom w-100">
                                     <div className="d-flex justify-content-between">
                                         <strong className="text-gray-dark">{item.title}</strong>
-                                        <a style={{cursor:"pointer"}} onClick={(e) => excluirItem(e, item)}>Excluir</a>
+                                        <option className="form-check-input" typeof="checkbox" id="flexCheckDefault" aria-checked={item.check}/>
+                                        <a style={{cursor:"pointer"}}>Excluir</a>
                                     </div>
                                 </div>
                             </div>
@@ -30,7 +42,7 @@ export default function ItensChecklist({list, excluirItem, excluirAll}: ItensChe
                 }
 
                 <small className="d-block text-end mt-3">
-                    <button onClick={(e) => excluirAll(e)} className="btn btn-primary rounded-pill px-3">Excluir todos os itens</button>
+                    <button className="btn btn-primary rounded-pill px-3">Desmarcar todos os itens todos os itens</button>
                 </small>
         </div>
         </div>
@@ -43,7 +55,7 @@ export default function ItensChecklist({list, excluirItem, excluirAll}: ItensChe
                     <div className="d-flex text-body-secondary pt-3">
                         <div className="pb-3 mb-0 small lh-sm border-bottom w-100">
                             <div className="d-flex justify-content-between">
-                                <strong className="text-gray-dark">Nenhum item adicionado</strong>
+                                <strong className="text-gray-dark">Selecione um projeto e um checklist</strong>
                             </div>
                         </div>
                     </div>
@@ -52,3 +64,4 @@ export default function ItensChecklist({list, excluirItem, excluirAll}: ItensChe
         )
     }
 }
+
