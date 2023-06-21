@@ -5,7 +5,7 @@ class ProjetoService {
         $projetos = ProjetoModel::obterProjetosEmpresa($id);
         $http = new Http();
         if (sizeof($projetos) == 0) {
-            return $http->noContent("Nenhum projeto encontrado");
+            return $http->noContent(new Response("Nenhum projeto foi encontrado!"));
         }
         return $http->ok(new Response(data: $projetos));
     }
