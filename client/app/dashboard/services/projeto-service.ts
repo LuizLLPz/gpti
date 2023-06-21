@@ -6,7 +6,7 @@ export async function createProject(model: Project) {
         NOME: model.name,
         DESCRICAO: model.description,
     };
-    const data = await fetch("http://localhost:80/Projeto/criarProjetos", {
+    const data = await fetch("http://localhost:80/Projeto/criarProjeto", {
         body: JSON.stringify(project),
         method: "POST",
         mode: "cors",
