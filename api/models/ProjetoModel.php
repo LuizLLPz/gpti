@@ -31,6 +31,10 @@ class ProjetoModel {
             $query = $connection->prepare($sql);
             $query->bindParam(":ID", $idprojeto);
             $query->execute();
+            $sql = "DELETE * FROM CHECKLIST WHERE IDPROJETO = :ID";
+            $query->bindParam(":ID", $idprojeto);
+            $query->execute();
+
             return $http->ok(new Response("Projeto apagado com sucesso"));
         } catch (PDOException $e) {
             return new Http(500, "Erro ao apagar projeto", $e->getMessage());

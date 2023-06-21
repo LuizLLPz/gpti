@@ -5,7 +5,7 @@ class ProjetoService {
         $projetos = ProjetoModel::obterProjetosEmpresa($id);
         $http = new Http();
         if (sizeof($projetos) == 0) {
-            return $http->noContent(new Response("Nenhum projeto foi encontrado!"));
+            return $http->notFound(new Response("Nenhum projeto foi encontrado!"));
         }
         return $http->ok(new Response(data: $projetos));
     }
@@ -29,6 +29,6 @@ class ProjetoService {
         $http = new Http();
         $projeto = ProjetoModel::obterProjetoID($id);
         if (!$projeto) return $http->notFound("Projeto não encontrado");
-        return $projeto->apagarProjeto();
+        return $projeto->apagarProjeto($id);
     }
 }

@@ -24,7 +24,7 @@ export async function createProject(model: Project) {
 
 export async function getProjetosEmpresa(): Promise<Project[]> {
     const data = await fetch(
-        "https://localhost:80/Projeto/obterProjetosEmpresa?IDEMPRESA=1"
+        "https://localhost:80/Projeto/obterProjetosEmpresa?IDEMPRESA=1",
     );
     const json = await data.json();
     const projetos: ProjectDTO[] = json.data;
